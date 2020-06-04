@@ -1,9 +1,38 @@
 $(function(){
+  function Listar(){
+    $.ajax({
+      // Como estaremos enviando os dados
+      type: "POST",
+      // Para onde estaremos enviando. Para o servidor do prof, para o arquivo listar.php
+      url: "https://wordpress-online-2.000webhostapp.com/webservice/listar.php",
+      // Tipo de dado recebido
+      dataType: "JSON",
+      // Se der bom,
+      // retorno é o json que está em listar.php
+      success: function(retorno){
+        var itemLista = "";
+        // retorno.pessoas representa a identificação do json
+        // dados representa codigo, nome, email e senha
+        // i representa os pares de chaves
+        // a função each é como a funcao foreach do c sharp
+        $.each(retorno.pessoas, function(i, dados){
+          itemLista += `<option value="${dados.codigo}">${dados.nome}</option>`
+        });
+        $("#listagem").append(itemLista);
+      },
+      error: function(retorno){
+        navigator.notification.alert("Erro ao buscar registro");
+      }
+    })
+  }
+
+  Listar();
+  
   $("#enviar").click(function(){
     // Um objeto do JS. Sintaxe muito similar a um dicionario do Python.
     var parametros = {
       "nome": $("#nome").val(),
-      "e-mail": $("#email").val(),
+      "email": $("#email").val(),
       "senha": $("#senha").val()
     }
 
