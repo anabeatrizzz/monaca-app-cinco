@@ -72,4 +72,36 @@ $(function(){
       }
     })
   })
+
+  // Quando ocorrer uma mudança no select,
+  $("#listagem").change(function(){
+    // Guarde o valor que está na option selecionada
+    var parametro = {
+      "codigo": $("#listagem option:selected").val()
+    }
+    $.ajax({
+      // Como estaremos enviando os dados
+      type: "POST",
+      // Para onde estaremos enviando. Para o servidor do prof, para o arquivo listar-um-registro.php
+      url: "https://wordpress-online-2.000webhostapp.com/webservice/listar-um-registro.php",
+      // O que estaremos enviando
+      data: parametro,
+      // Tipo de dado recebido
+      dataType: "JSON",
+      // Se der bom,
+      // retorno representa o que listar-um-registro.php retorna, nesse caso, um JSON
+      success: function(retorno){
+        $("#codigo").val(retorno.pessoa.codigo);
+        $("#nome").val(retorno.pessoa.nome);
+        $("#email").val(retorno.pessoa.email);
+        $("#senha").val(retorno.pessoa.senha);
+      },
+      // Se der ruim,
+      error: function(retorno){
+        // Mostramos um alert com uma mensagem de erro
+        navigator.notification.alert("Algum erro ocorreu");
+      }
+    })
+  })
+  
 })
