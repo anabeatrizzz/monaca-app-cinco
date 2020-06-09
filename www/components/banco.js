@@ -27,6 +27,21 @@ $(function(){
   }
 
   Listar();
+
+  // Função que deixa usuario escrever nos inputs
+  function habilitarInputs(){
+    // O metodo prop() define ou retorna propriedades e valores dos elementos selecionados
+    $("#nome").prop("readonly", false)
+    $("#email").prop("readonly", false)
+    $("#senha").prop("readonly", false)
+  }
+
+  // Função que bloqueia a escrita nos inputs
+  function desabilitarInputs(){
+    $("#nome").prop("readonly", true)
+    $("#email").prop("readonly", true)
+    $("#senha").prop("readonly", true)
+  }
   
   $("#enviar").click(function(){
     // Um objeto do JS. Sintaxe muito similar a um dicionario do Python.
@@ -104,4 +119,74 @@ $(function(){
     })
   })
   
+  $("#editar").click(function(){
+    habilitarInputs();
+  })
+
+  $("#salvar").click(function(){
+    var parametros = {
+      "codigo": $("#codigo").val(),
+      "nome": $("#nome").val(),
+      "email": $("#email").val(),
+      "senha": $("#senha").val()
+    }
+
+    $.ajax({
+      // Como estaremos enviando os dados
+      type: "POST",
+      // Para onde estaremos enviando. Para o servidor do prof, para o arquivo atualiza.php
+      url: "https://wordpress-online-2.000webhostapp.com/webservice/atualiza.php",
+      // O que estaremos enviando
+      data: parametros,
+      // Se der bom,
+      // retorno representa o que a pagina atualiza.php retorna
+      success: function(retorno){
+        // mostramos um alert com retorno
+        navigator.notification.alert(retorno);
+        // e recarregaremos a pagina
+        location.reload();
+        // com os inputs desabilitados
+        desabilitarInputs();
+      },
+      // Se der ruim,
+      error: function(retorno){
+        // Mostramos um alert com uma mensagem de erro
+        navigator.notification.alert("Algum erro ocorreu");
+      }
+    })
+  })
+
+  $("#cancelar").click(function(){
+    desabilitarInputs();
+  })
+
+  $("#excluir").click(function(){
+    var parametros = {
+      "codigo": $("#codigo").val()
+    }
+
+    $.ajax({
+      // Como estaremos enviando os dados
+      type: "POST",
+      // Para onde estaremos enviando. Para o servidor do prof, para o arquivo delete.php
+      url: "https://wordpress-online-2.000webhostapp.com/webservice/delete.php",
+      // O que estaremos enviando
+      data: parametros,
+      // Se der bom,
+      // retorno representa o que a pagina atualiza.php retorna
+      success: function(retorno){
+        // mostramos um alert com retorno
+        navigator.notification.alert(retorno);
+        // e recarregaremos a pagina
+        location.reload();
+        // com os inputs desabilitados
+        desabilitarInputs();
+      },
+      // Se der ruim,
+      error: function(retorno){
+        // Mostramos um alert com uma mensagem de erro
+        navigator.notification.alert("Algum erro ocorreu");
+      }
+    })
+  })
 })
