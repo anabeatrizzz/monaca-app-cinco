@@ -1,6 +1,6 @@
 # Índice
 * [O que aprendi? :thinking:](#o-que-aprendi-thinking)
-* [Tela](#tela)
+* [Telas](#telas)
 * [Instalação](#instalação)
 * [Ajuda](#ajuda)
 * [Como contribuir](#como-contribuir)
@@ -13,7 +13,7 @@ Este é o quinto aplicativo que desenvolvo para a disciplina Programação de Ap
 - [Terceiro vídeo explicativo](https://youtu.be/jypNwGZuQwo)
 - [Quarto vídeo explicativo](https://youtu.be/HzOb08Hz1vY)
 
-<a href="#índice"><h1 align="center">Tela</h1></a>
+<a href="#índice"><h1 align="center">Telas</h1></a>
 <p align="center">
   <kbd><img width="250" src="https://i.ibb.co/6NWkRbF/IMG-20201017-105726.jpg" /></kbd>
   <kbd><img width="250" src="https://i.ibb.co/d0W0RBN/IMG-20201017-105753.jpg" /></kbd>
