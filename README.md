@@ -35,3 +35,5 @@ Ou abra uma issue.
 1. Dê um fork neste projeto
 2. Crie uma branch para suas modificações
 3. Envie um pull request
+
+[![GitHub license](https://img.shields.io/github/license/anabeatrizzz/monaca-app-cinco?color=blue&style=for-the-badge)](https://github.com/anabeatrizzz/monaca-app-cinco/blob/master/LICENSE)
